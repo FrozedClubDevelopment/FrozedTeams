@@ -2,7 +2,6 @@ package club.frozed.frozedteams.managers.tracker;
 
 import club.frozed.frozedteams.FrozedTeams;
 import club.frozed.frozedteams.utils.chat.fanciful.FancyMessage;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -12,7 +11,7 @@ import org.bukkit.entity.Player;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class PermanentTracker implements Track {
+public class PermanentTracker implements Tracker {
 
     private Player player;
     private Block middleBlock;
