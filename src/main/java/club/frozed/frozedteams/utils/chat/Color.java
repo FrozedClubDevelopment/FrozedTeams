@@ -15,5 +15,4 @@ public class Color {
     public static List<String> translate(List<String> list) {
         return list.stream().map(Color::translate).collect(Collectors.toList());
     }
-
 }
