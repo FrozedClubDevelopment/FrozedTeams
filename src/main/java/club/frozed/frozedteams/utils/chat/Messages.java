@@ -4,11 +4,13 @@ import club.frozed.frozedteams.FrozedTeams;
 
 public class Messages {
 
+    public static String CATCH_NOT_ENOUGH_XP;
+    public static String CATCH_NOT_TOO_FAR;
     public static String CATCH_SUCCEEDED;
-    public static String CATCH_FAILED;
 
     static {
-        CATCH_SUCCEEDED = Color.translate(FrozedTeams.getInstance().getConfiguration("messages.yml").getString(""));
-        CATCH_FAILED = Color.translate(FrozedTeams.getInstance().getConfiguration("messages.yml").getString(""));
+        CATCH_SUCCEEDED = Color.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.Succeeded"));
+        CATCH_NOT_TOO_FAR = Color.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.NotTooFar"));
+        CATCH_NOT_ENOUGH_XP = Color.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.NotEnoughXP"));
     }
 }
