@@ -2,7 +2,7 @@ package club.frozed.frozedteams.commands;
 
 import club.frozed.frozedteams.managers.tracker.PermanentTracker;
 import club.frozed.frozedteams.managers.tracker.TemporalTracker;
-import club.frozed.frozedteams.managers.tracker.Track;
+import club.frozed.frozedteams.managers.tracker.Tracker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -28,7 +28,7 @@ public class TrackCommand implements CommandExecutor {
                 return true;
             } else {
                 Block center = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
-                Track tracker = null;
+                Tracker tracker = null;
                 if (center.getType() == Material.DIAMOND_BLOCK) {
                     tracker = new PermanentTracker(player);
                 } else if (center.getType() == Material.OBSIDIAN) {
