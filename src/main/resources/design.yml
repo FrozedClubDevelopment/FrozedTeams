@@ -1,2 +1,19 @@
 Scoreboard:
-Tablist:
+  title: "&b&lFrozedTeams"
+  enabled: "&aEnabled"
+  disabled: "&cDisabled"
+
+  spawn-scoreboard:
+    - "&7&m------------------"
+    - " "
+    - "&7&m------------------"
+
+  outside-spawn-scoreboard:
+    - "&7&m------------------"
+    - " "
+    - "&7&m------------------"
+
+  pvp-protection-scoreboard:
+    - "&7&m------------------"
+    - " "
+    - "&7&m------------------"
