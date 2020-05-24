@@ -15,7 +15,8 @@ public class SalvagingListener implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (event.getAction() == null || player.getItemInHand().getType() == null || event.getClickedBlock() == null) return;
+        if (event.getAction() == null || player.getItemInHand().getType() == null || event.getClickedBlock() == null)
+            return;
         Material block = event.getClickedBlock().getType();
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (block == Material.DIAMOND_BLOCK || block == Material.IRON_BLOCK || block == Material.GOLD_BLOCK) {
@@ -37,13 +38,12 @@ public class SalvagingListener implements Listener {
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.DIAMOND, 7));
                                     break;
-                                case DIAMOND_BARDING:
                                 case DIAMOND_BOOTS:
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.DIAMOND, 4));
                                     break;
-                                case DIAMOND_HOE:
                                 case DIAMOND_SWORD:
+                                case DIAMOND_HOE:
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.DIAMOND, 2));
                                     break;
@@ -75,13 +75,12 @@ public class SalvagingListener implements Listener {
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.GOLD_INGOT, 7));
                                     break;
-                                case GOLD_BARDING:
                                 case GOLD_BOOTS:
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.GOLD_INGOT, 4));
                                     break;
-                                case GOLD_HOE:
                                 case GOLD_SWORD:
+                                case GOLD_HOE:
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.GOLD_INGOT, 2));
                                     break;
@@ -113,13 +112,12 @@ public class SalvagingListener implements Listener {
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.IRON_INGOT, 7));
                                     break;
-                                case IRON_BARDING:
                                 case IRON_BOOTS:
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.IRON_INGOT, 4));
                                     break;
-                                case IRON_HOE:
                                 case IRON_SWORD:
+                                case IRON_HOE:
                                     player.setItemInHand(null);
                                     player.getWorld().dropItem(event.getClickedBlock().getLocation(), new ItemStack(Material.IRON_INGOT, 2));
                                     break;
