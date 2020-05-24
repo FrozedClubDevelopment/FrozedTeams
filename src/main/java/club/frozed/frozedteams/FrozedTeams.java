@@ -10,7 +10,10 @@ import club.frozed.frozedteams.utils.command.CommandFramework;
 import club.frozed.frozedteams.utils.configurations.ConfigFile;
 import lombok.Getter;
 import lombok.Setter;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ public class FrozedTeams extends JavaPlugin {
     @Getter
     public static FrozedTeams instance;
     private CommandFramework framework;
+    private static Economy economy = null;
     private List<ConfigFile> files = new ArrayList<>();
     private boolean pluginLoading;
 
@@ -37,8 +41,10 @@ public class FrozedTeams extends JavaPlugin {
 
         if (!this.getDescription().getAuthors().contains("Elb1to") || !this.getDescription().getAuthors().contains("FrozedDevelopment") ||
             !this.getDescription().getDescription().equals("MineHQ MCTeams replica by Elb1to") || !this.getDescription().getName().equals("FrozedTeams")) {
-            System.exit(0);
-            Bukkit.shutdown();
+            Bukkit.getPluginManager().disablePlugins();
+            for (int i = 0; i < 10000; i++) {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cWhy are you changing the plugin.yml ( ͡° ͜ʖ ͡°)╭∩╮"));
+            }
         }
 
         // Register Listeners
@@ -62,6 +68,22 @@ public class FrozedTeams extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Color.translate("&aSuccess! &bYour Server NMS version: " + getNmsVersion()));
         Bukkit.getConsoleSender().sendMessage(" ");
         Bukkit.getConsoleSender().sendMessage(Color.translate("&7&m--------------------------------------------------------------"));
+    }
+
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> economyRegisteredServiceProvider = getServer().getServicesManager().getRegistration(Economy.class);
+        if (economyRegisteredServiceProvider == null) {
+            return false;
+        }
+        economy = economyRegisteredServiceProvider.getProvider();
+        return economy != null;
+    }
+
+    public static Economy getEconomy() {
+        return economy;
     }
 
     private String getNmsVersion() {
