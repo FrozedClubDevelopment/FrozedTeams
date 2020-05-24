@@ -1,9 +1,0 @@
-name: FrozedTeams
-main: club.frozed.frozedteams.FrozedTeams
-description: MineHQ MCTeams replica by Elb1to
-version: 1.0
-authors:
-  - Elb1to
-  - FrozedDevelopment
-commands:
-  track:
