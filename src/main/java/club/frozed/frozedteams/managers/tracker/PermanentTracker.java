@@ -1,6 +1,7 @@
 package club.frozed.frozedteams.managers.tracker;
 
 import club.frozed.frozedteams.FrozedTeams;
+import club.frozed.frozedteams.enums.TrackerDirection;
 import club.frozed.frozedteams.utils.chat.fanciful.FancyMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
