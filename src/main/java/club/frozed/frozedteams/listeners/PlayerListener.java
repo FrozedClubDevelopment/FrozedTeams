@@ -1,6 +1,7 @@
 package club.frozed.frozedteams.listeners;
 
 import club.frozed.frozedteams.FrozedTeams;
+import club.frozed.frozedteams.profile.Profile;
 import club.frozed.frozedteams.utils.region.Cuboid;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,11 +14,23 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerListener implements Listener {
 
+    @EventHandler
+    final void onPlayerJoin(PlayerJoinEvent event) {
+        new Profile(event.getPlayer().getUniqueId());
+    }
+
+    @EventHandler
+    final void onPlayerQuit(PlayerQuitEvent event) {
+        Profile.get(event.getPlayer()).save();
+    }
+
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOW)
-    public void onPlayerInteract(PlayerInteractEvent event) {
+    final void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_AIR) {
             if (event.getItem() != null) {
                 if (event.getItem().getType() == Material.BLAZE_ROD) {
@@ -41,7 +54,7 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onBreak(BlockBreakEvent event) {
+    final void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
             if (LocationManager.getSpawn().distance(player.getLocation()) <= FrozedTeams.getInstance().getConfig().getInt("Settings.protect-size")) {
@@ -51,7 +64,7 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onPlace(BlockPlaceEvent event) {
+    final void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
         if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
             if (LocationManager.getSpawn().distance(player.getLocation()) <= FrozedTeams.getInstance().getConfig().getInt("Settings.protect-size")) {

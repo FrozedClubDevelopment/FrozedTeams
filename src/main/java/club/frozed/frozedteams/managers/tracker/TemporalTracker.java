@@ -1,7 +1,7 @@
 package club.frozed.frozedteams.managers.tracker;
 
+import club.frozed.frozedteams.FrozedTeams;
 import club.frozed.frozedteams.enums.TrackerDirection;
-import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -73,7 +73,7 @@ public class TemporalTracker implements Tracker {
         int south = this.countDistance(TrackerDirection.SOUTH, true) * 25;
         int west = this.countDistance(TrackerDirection.WEST, true) * 25;
         if (north == 0 && east == 0 && south == 0 && west == 0) {
-            this.player.sendMessage(ChatColor.RED + "Not a valid tracking compass.");
+            player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("INVALID-TRACK-COMPASS"));
             return;
         }
         for (TrackerDirection direction : TrackerDirection.values()) {
@@ -92,10 +92,10 @@ public class TemporalTracker implements Tracker {
             }
             if (length <= 0) continue;
             if (this.onTracker(target, direction, length)) {
-                this.player.sendMessage(ChatColor.GREEN + target.getName() + " is within " + length + " blocks " + direction + " of here.");
+                player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("TRACK-WITHIN-FORMAT").replace("{PLAYER}", target.getName()).replace("{BLOCKS}", String.valueOf(length)).replace("{DIRECTION}", direction.name()));
                 continue;
             }
-            this.player.sendMessage(ChatColor.RED + target.getName() + " is NOT within " + length + " blocks " + direction + " of here.");
+            player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("TRACK-NOT-WITHIN-FORMAT").replace("{PLAYER}", target.getName()).replace("{BLOCKS}", String.valueOf(length)).replace("{DIRECTION}", direction.name()));
         }
     }
 
@@ -106,9 +106,9 @@ public class TemporalTracker implements Tracker {
         int south = this.countDistance(TrackerDirection.SOUTH, false) * 25;
         int west = this.countDistance(TrackerDirection.WEST, false) * 25;
         if (north == 0 && east == 0 && south == 0 && west == 0) {
-            this.player.sendMessage(ChatColor.RED + "Not a valid tracking compass.");
+            player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("INVALID-TRACK-COMPASS"));
         } else {
-            this.player.sendMessage(ChatColor.RED + "You cannot track all with this type of tracker.");
+            player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("CANT-TRACK-ALL"));
         }
     }
 }

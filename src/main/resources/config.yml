@@ -1,0 +1,11 @@
+NETHER-TRACKER: false
+
+DATABASE:
+  MONGO:
+    HOST: "127.0.0.1"
+    PORT: 27017
+    AUTHENTICATION:
+      ENABLED: FALSE
+      USER: ''
+      DATABASE: "admin"
+      PASSWORD: ''

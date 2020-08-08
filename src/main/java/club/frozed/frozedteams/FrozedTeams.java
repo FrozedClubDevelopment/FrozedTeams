@@ -1,13 +1,15 @@
 package club.frozed.frozedteams;
 
-import club.frozed.frozedteams.commands.TrackCommand;
+import club.frozed.frozedteams.commands.PlayerCommands;
 import club.frozed.frozedteams.listeners.MobCatchingListener;
 import club.frozed.frozedteams.listeners.MobListener;
 import club.frozed.frozedteams.listeners.PlayerListener;
 import club.frozed.frozedteams.listeners.SalvagingListener;
-import club.frozed.frozedteams.utils.chat.Color;
+import club.frozed.frozedteams.managers.MongoManager;
+import club.frozed.frozedteams.utils.chat.ColorText;
 import club.frozed.frozedteams.utils.command.CommandFramework;
 import club.frozed.frozedteams.utils.configurations.ConfigFile;
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 import net.milkbowl.vault.economy.Economy;
@@ -25,11 +27,16 @@ import java.util.List;
 public class FrozedTeams extends JavaPlugin {
 
     @Getter
-    public static FrozedTeams instance;
+    private static FrozedTeams instance;
     private CommandFramework framework;
     private static Economy economy = null;
     private List<ConfigFile> files = new ArrayList<>();
     private boolean pluginLoading;
+
+    private Gson gson = new Gson();
+
+    //MANAGERS
+    private MongoManager mongoManager;
 
     @Override
     public void onEnable() {
@@ -40,7 +47,7 @@ public class FrozedTeams extends JavaPlugin {
         registerConfigurations();
 
         if (!this.getDescription().getAuthors().contains("Elb1to") || !this.getDescription().getAuthors().contains("FrozedDevelopment") ||
-            !this.getDescription().getDescription().equals("MineHQ MCTeams replica by Elb1to") || !this.getDescription().getName().equals("FrozedTeams")) {
+                !this.getDescription().getDescription().equals("MineHQ MCTeams replica by Elb1to and Tincho.") || !this.getDescription().getName().equals("FrozedTeams")) {
             Bukkit.getPluginManager().disablePlugins();
             for (int i = 0; i < 10000; i++) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cWhy are you changing the plugin.yml ( ͡° ͜ʖ ͡°)╭∩╮"));
@@ -55,19 +62,26 @@ public class FrozedTeams extends JavaPlugin {
 
         // Register Managers
 
-        // Register Commands
-        this.getCommand("track").setExecutor(new TrackCommand());
+        registerManagers();
 
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&7&m--------------------------------------------------------------"));
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&7This server is using &bFrozedTeams"));
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&7Authors&8: &b" + getDescription().getAuthors()));
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&7Version&8: &b" + getDescription().getVersion()));
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&7&m--------------------------------------------------------------"));
+        // Register Commands
+        CommandFramework framework = new CommandFramework(this);
+        framework.registerCommands(new PlayerCommands());
+
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7&m--------------------------------------------------------------"));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7This server is using &bFrozedTeams"));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7Authors&8: &b" + getDescription().getAuthors()));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7Version&8: &b" + getDescription().getVersion()));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7&m--------------------------------------------------------------"));
         Bukkit.getConsoleSender().sendMessage(" ");
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&bChecking your spigot version..."));
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&aSuccess! &bYour Server NMS version: " + getNmsVersion()));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&bChecking your spigot version..."));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&aSuccess! &bYour Server NMS version: " + getNmsVersion()));
         Bukkit.getConsoleSender().sendMessage(" ");
-        Bukkit.getConsoleSender().sendMessage(Color.translate("&7&m--------------------------------------------------------------"));
+        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7&m--------------------------------------------------------------"));
+    }
+
+    private void registerManagers() {
+        (this.mongoManager = new MongoManager()).connect();
     }
 
     private boolean setupEconomy() {

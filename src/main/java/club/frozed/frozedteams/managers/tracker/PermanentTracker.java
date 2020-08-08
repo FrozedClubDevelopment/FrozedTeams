@@ -38,16 +38,16 @@ public class PermanentTracker implements Tracker {
         int south = this.countDistance(TrackerDirection.SOUTH) * 25;
         int west = this.countDistance(TrackerDirection.WEST) * 25;
         if ((north == 0 && east == 0 && south == 0 && west == 0) || this.middleBlock.getType() != Material.DIAMOND_BLOCK) {
-            this.player.sendMessage(ChatColor.RED + "Not a valid tracking compass.");
+            player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("INVALID-TRACK-COMPASS"));
             return;
         }
         for (TrackerDirection direction : TrackerDirection.values()) {
             int length = this.countDistance(direction) * 25;
             if (length > 0) {
                 if (this.onBlock(target, direction)) {
-                    this.player.sendMessage(ChatColor.GREEN + target.getName() + " is within " + length + " blocks " + direction + " of here.");
+                    player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("TRACK-WITHIN-FORMAT").replace("{PLAYER}", target.getName()).replace("{BLOCKS}", String.valueOf(length)).replace("{DIRECTION}", direction.name()));
                 } else {
-                    this.player.sendMessage(ChatColor.RED + target.getName() + " is NOT within " + length + " blocks " + direction + " of here.");
+                    player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("TRACK-NOT-WITHIN-FORMAT").replace("{PLAYER}", target.getName()).replace("{BLOCKS}", String.valueOf(length)).replace("{DIRECTION}", direction.name()));
                 }
             }
         }
@@ -59,7 +59,7 @@ public class PermanentTracker implements Tracker {
         int south = this.countDistance(TrackerDirection.SOUTH) * 25;
         int west = this.countDistance(TrackerDirection.WEST) * 25;
         if (north == 0 && east == 0 && south == 0 && west == 0) {
-            this.player.sendMessage(ChatColor.RED + "Not a valid tracking compass.");
+            player.sendMessage(FrozedTeams.getInstance().getConfiguration("messages").getString("INVALID-TRACK-COMPASS"));
             return;
         }
         for (TrackerDirection direction : TrackerDirection.values()) {

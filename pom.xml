@@ -20,14 +20,20 @@
     </repositories>
 
     <dependencies>
-        <!-- PaperSpigot 1.7 -->
+        <!-- PaperSpigot 1.8 -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.7.10-R0.1-SNAPSHOT</version>
+            <groupId>org.spigot</groupId>
+            <artifactId>ragespigot-api</artifactId>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>C:/Users/Elb1to/Documents/GitHub/FrozedDevelopment/libs/PaperSpigot-1.7.10-R0.1-SNAPSHOT.jar
-            </systemPath>
+            <systemPath>${project.basedir}/libs/spigot-1.8.8-R0.1-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.spigot</groupId>
+            <artifactId>ragespigot-server</artifactId>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigot-1.8.8-R0.1-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!-- Google Gson -->
@@ -41,9 +47,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/Elb1to/Documents/GitHub/FrozedDevelopment/libs/lombok.jar</systemPath>
+            <version>1.18.10</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Vault -->
@@ -51,6 +56,14 @@
             <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
             <version>1.7</version>
+        </dependency>
+
+        <!-- Mongo -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>LATEST</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
