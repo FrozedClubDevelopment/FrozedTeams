@@ -20,20 +20,13 @@
     </repositories>
 
     <dependencies>
-        <!-- PaperSpigot 1.8 -->
+        <!-- PaperSpigot 1.7.10 -->
         <dependency>
-            <groupId>org.spigot</groupId>
-            <artifactId>ragespigot-api</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.7.10-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigot-1.8.8-R0.1-SNAPSHOT.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.spigot</groupId>
-            <artifactId>ragespigot-server</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigot-1.8.8-R0.1-SNAPSHOT.jar</systemPath>
+            <systemPath>${project.basedir}/libs/PaperSpigot-1.7.10-R0.1-SNAPSHOT.jar</systemPath>
         </dependency>
 
         <!-- Google Gson -->

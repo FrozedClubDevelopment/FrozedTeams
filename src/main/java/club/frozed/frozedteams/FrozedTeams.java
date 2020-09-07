@@ -35,8 +35,21 @@ public class FrozedTeams extends JavaPlugin {
 
     private Gson gson = new Gson();
 
-    //MANAGERS
     private MongoManager mongoManager;
+
+    /*
+     * TODO List:
+     *  - Make Teams System
+     *  - Make Economy System using Vault
+     *  - Make Shop for players to be able to buy resources
+     *
+     *  NOTE: All data has to be saved on Mongo
+     *
+     *      + Useful Links:
+     *          - https://minehq.fandom.com/wiki/MCTeams
+     *          - https://minehq.fandom.com/wiki/Economy
+     *          - https://minehq.fandom.com/wiki/Team
+     */
 
     @Override
     public void onEnable() {
@@ -46,10 +59,9 @@ public class FrozedTeams extends JavaPlugin {
         // Register config files
         registerConfigurations();
 
-        if (!this.getDescription().getAuthors().contains("Elb1to") || !this.getDescription().getAuthors().contains("FrozedDevelopment") ||
-                !this.getDescription().getDescription().equals("MineHQ MCTeams replica by Elb1to and Tincho.") || !this.getDescription().getName().equals("FrozedTeams")) {
-            Bukkit.getPluginManager().disablePlugins();
-            for (int i = 0; i < 10000; i++) {
+        if (!this.getDescription().getAuthors().contains("Elb1to") || !this.getDescription().getAuthors().contains("FrozedClubDevelopment") || !this.getDescription().getDescription().equals("MineHQ MCTeams replica by Elb1to.") || !this.getDescription().getName().equals("FrozedTeams")) {
+            Bukkit.getPluginManager().disablePlugin(this);
+            for (int i = 0; i < 25; i++) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cWhy are you changing the plugin.yml ( ͡° ͜ʖ ͡°)╭∩╮"));
             }
         }
@@ -61,7 +73,6 @@ public class FrozedTeams extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new MobListener(), this);
 
         // Register Managers
-
         registerManagers();
 
         // Register Commands
