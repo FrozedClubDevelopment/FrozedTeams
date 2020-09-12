@@ -6,7 +6,8 @@ import club.frozed.frozedteams.listeners.MobListener;
 import club.frozed.frozedteams.listeners.PlayerListener;
 import club.frozed.frozedteams.listeners.SalvagingListener;
 import club.frozed.frozedteams.managers.MongoManager;
-import club.frozed.frozedteams.utils.chat.ColorText;
+import club.frozed.frozedteams.managers.team.TeamManager;
+import club.frozed.frozedteams.utils.chat.CC;
 import club.frozed.frozedteams.utils.command.CommandFramework;
 import club.frozed.frozedteams.utils.configurations.ConfigFile;
 import com.google.gson.Gson;
@@ -32,6 +33,7 @@ public class FrozedTeams extends JavaPlugin {
     private static Economy economy = null;
     private List<ConfigFile> files = new ArrayList<>();
     private boolean pluginLoading;
+    private TeamManager teamManager;
 
     private Gson gson = new Gson();
 
@@ -66,6 +68,11 @@ public class FrozedTeams extends JavaPlugin {
             }
         }
 
+        /*
+        Team Manager
+         */
+        teamManager = new TeamManager();
+
         // Register Listeners
         Bukkit.getPluginManager().registerEvents(new MobCatchingListener(), this);
         Bukkit.getPluginManager().registerEvents(new SalvagingListener(), this);
@@ -79,16 +86,16 @@ public class FrozedTeams extends JavaPlugin {
         CommandFramework framework = new CommandFramework(this);
         framework.registerCommands(new PlayerCommands());
 
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7&m--------------------------------------------------------------"));
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7This server is using &bFrozedTeams"));
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7Authors&8: &b" + getDescription().getAuthors()));
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7Version&8: &b" + getDescription().getVersion()));
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7&m--------------------------------------------------------------"));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&7&m--------------------------------------------------------------"));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&7This server is using &bFrozedTeams"));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&7Authors&8: &b" + getDescription().getAuthors()));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&7Version&8: &b" + getDescription().getVersion()));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&7&m--------------------------------------------------------------"));
         Bukkit.getConsoleSender().sendMessage(" ");
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&bChecking your spigot version..."));
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&aSuccess! &bYour Server NMS version: " + getNmsVersion()));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&bChecking your spigot version..."));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&aSuccess! &bYour Server NMS version: " + getNmsVersion()));
         Bukkit.getConsoleSender().sendMessage(" ");
-        Bukkit.getConsoleSender().sendMessage(ColorText.translate("&7&m--------------------------------------------------------------"));
+        Bukkit.getConsoleSender().sendMessage(CC.translate("&7&m--------------------------------------------------------------"));
     }
 
     private void registerManagers() {

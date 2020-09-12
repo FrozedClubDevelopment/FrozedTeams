@@ -18,5 +18,4 @@ public class PlayerData {
         this.uuid = uuid;
         this.name = Bukkit.getOfflinePlayer(uuid).getName();
     }
-
 }
