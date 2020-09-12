@@ -7,7 +7,7 @@ import club.frozed.frozedteams.managers.PlayerDataManager;
 import club.frozed.frozedteams.managers.PlayerManager;
 import club.frozed.frozedteams.utils.board.Board;
 import club.frozed.frozedteams.utils.board.BoardAdapter;
-import club.frozed.frozedteams.utils.chat.ColorText;
+import club.frozed.frozedteams.utils.chat.CC;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -20,12 +20,12 @@ public class FrozedScoreboardLayout implements BoardAdapter {
     @Override
     public String getTitle(Player player) {
         String title = FrozedTeams.getInstance().getConfiguration("design").getString("Scoreboard.title");
-        return ColorText.translate(title);
+        return CC.translate(title);
     }
 
     @Override
     public List<String> getScoreboard(Player player, Board board) {
-        return ColorText.translate(getPlayerScoreboard(player));
+        return CC.translate(getPlayerScoreboard(player));
     }
 
     private List<String> getPlayerScoreboard(Player player) {

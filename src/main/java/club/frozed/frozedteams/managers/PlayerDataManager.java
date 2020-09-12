@@ -1,8 +1,11 @@
 package club.frozed.frozedteams.managers;
 
+import club.frozed.frozedteams.FrozedTeams;
 import club.frozed.frozedteams.data.PlayerData;
+import com.mongodb.client.model.Filters;
 import lombok.Data;
 import lombok.Getter;
+import org.bson.Document;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,14 +34,13 @@ public class PlayerDataManager {
         if (!hasData(info)) {
             return;
         }
-        Document document = MongoManager.getInstance().getStatsCollection().find(Filters.eq("info", info)).first();
+        Document document = FrozedTeams.getInstance().getMongoManager().getPlayerData().find(Filters.eq("info")).first();
         document.put(value, amount);
-        MongoManager.getInstance().getStatsCollection().replaceOne(Filters.eq("info", info), document);
-        data.load();
+        FrozedTeams.getInstance().getMongoManager().getPlayerData().replaceOne(Filters.eq("info", info), document);
     }
 
     private boolean hasData(String info) {
-        Document document = MongoManager.getInstance().getStatsCollection().find(Filters.eq("info", info)).first();
+        Document document = FrozedTeams.getInstance().getMongoManager().getPlayerData().find(Filters.eq("info", info)).first();
         return document != null;
     }
 }

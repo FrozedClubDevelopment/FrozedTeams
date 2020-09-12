@@ -7,10 +7,15 @@ import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
+import lombok.Getter;
+import org.bson.Document;
 
+@Getter
 public class MongoManager {
 
     private MongoClient client;
+
+    private MongoCollection<Document> playerData, teamData;
 
     public void connect() {
         ConfigFile configuration = FrozedTeams.getInstance().getConfiguration("config");
@@ -24,13 +29,13 @@ public class MongoManager {
                     configuration.getString("DATABASE.MONGO.AUTHENTICATION.PASSWORD").toCharArray());
 
             client = new MongoClient(serverAddress, credential, MongoClientOptions.builder().build());
+            this.playerData = client.getDatabase("FrozedTeams").getCollection("PlayerData");
+            this.teamData = client.getDatabase("FrozedTeams").getCollection("TeamData");
         } else {
             client = new MongoClient(configuration.getString("DATABASE.MONGO.HOST"), configuration.getInt("DATABASE.MONGO.PORT"));
+            this.playerData = client.getDatabase("FrozedTeams").getCollection("PlayerData");
+            this.teamData = client.getDatabase("FrozedTeams").getCollection("TeamData");
         }
-    }
-
-    public MongoCollection getCollection(String name) {
-        return client.getDatabase("FrozedTeams").getCollection(name);
     }
 
     public void disconnect() {

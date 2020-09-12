@@ -32,7 +32,7 @@ public class Profile implements DocumentSerializer {
     }
 
     private void load() {
-        Document document = (Document) FrozedTeams.getInstance().getMongoManager().getCollection("profiles").find(Filters.eq("uuid", uuid.toString())).first();
+        Document document = (Document) FrozedTeams.getInstance().getMongoManager().getPlayerData().find(Filters.eq("uuid", uuid.toString())).first();
         if (document != null) {
             if (document.containsKey("playerWarps")) {
                 JsonObject tmp = FrozedTeams.getInstance().getGson().fromJson(document.toJson(), JsonObject.class);
@@ -43,7 +43,7 @@ public class Profile implements DocumentSerializer {
     }
 
     public void save() {
-        FrozedTeams.getInstance().getMongoManager().getCollection("profiles").replaceOne(Filters.eq("uuid", uuid.toString()), serialize(), new UpdateOptions().upsert(true));
+        FrozedTeams.getInstance().getMongoManager().getPlayerData().replaceOne(Filters.eq("uuid", uuid.toString()), serialize(), new UpdateOptions().upsert(true));
 
         profiles.remove(this);
     }

@@ -9,8 +9,8 @@ public class Messages {
     public static String CATCH_SUCCEEDED;
 
     static {
-        CATCH_SUCCEEDED = ColorText.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.Succeeded"));
-        CATCH_NOT_TOO_FAR = ColorText.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.NotTooFar"));
-        CATCH_NOT_ENOUGH_XP = ColorText.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.NotEnoughXP"));
+        CATCH_SUCCEEDED = CC.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.Succeeded"));
+        CATCH_NOT_TOO_FAR = CC.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.NotTooFar"));
+        CATCH_NOT_ENOUGH_XP = CC.translate(FrozedTeams.getInstance().getConfiguration("messages").getString("Catching.NotEnoughXP"));
     }
 }

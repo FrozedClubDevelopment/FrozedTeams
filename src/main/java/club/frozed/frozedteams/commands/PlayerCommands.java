@@ -6,7 +6,7 @@ import club.frozed.frozedteams.managers.tracker.TemporalTracker;
 import club.frozed.frozedteams.managers.tracker.Tracker;
 import club.frozed.frozedteams.profile.Profile;
 import club.frozed.frozedteams.profile.warp.PlayerWarp;
-import club.frozed.frozedteams.utils.chat.ColorText;
+import club.frozed.frozedteams.utils.chat.CC;
 import club.frozed.frozedteams.utils.command.Command;
 import club.frozed.frozedteams.utils.command.CommandArgs;
 import club.frozed.frozedteams.utils.configurations.ConfigFile;
@@ -65,13 +65,13 @@ public class PlayerCommands {
         String[] args = commandArgs.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 48)));
-            player.sendMessage(ColorText.translate("&6Warp Commands:"));
-            player.sendMessage(ColorText.translate(" &e/warp set (warpname)"));
-            player.sendMessage(ColorText.translate(" &e/warp delete (warpname)"));
-            player.sendMessage(ColorText.translate(" &e/warp (warpname)"));
-            player.sendMessage(ColorText.translate(" &e/warp list"));
-            player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 48)));
+            player.sendMessage(CC.translate("&7&m" + StringUtils.repeat("-", 48)));
+            player.sendMessage(CC.translate("&6Warp Commands:"));
+            player.sendMessage(CC.translate(" &e/warp set (warpname)"));
+            player.sendMessage(CC.translate(" &e/warp delete (warpname)"));
+            player.sendMessage(CC.translate(" &e/warp (warpname)"));
+            player.sendMessage(CC.translate(" &e/warp list"));
+            player.sendMessage(CC.translate("&7&m" + StringUtils.repeat("-", 48)));
         } else {
             Profile profile = Profile.get(player);
             if (profile.getWarps().isEmpty()) {
@@ -99,7 +99,7 @@ public class PlayerCommands {
         String[] args = commandArgs.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /warp set (warpname)"));
+            player.sendMessage(CC.translate("&cUsage: /warp set (warpname)"));
         } else {
             Profile profile = Profile.get(player);
             PlayerWarp warp = profile.getWarpByName(args[0]);
@@ -121,7 +121,7 @@ public class PlayerCommands {
         String[] args = commandArgs.getArgs();
 
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /warp delete (warpname)"));
+            player.sendMessage(CC.translate("&cUsage: /warp delete (warpname)"));
         } else {
             Profile profile = Profile.get(player);
             PlayerWarp warp = profile.getWarpByName(args[0]);
@@ -143,11 +143,11 @@ public class PlayerCommands {
         if (profile.getWarps().isEmpty()) {
             player.sendMessage(langConfig.getString("NO-WARPS"));
         } else {
-            player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 48)));
-            player.sendMessage(ColorText.translate("&6Warp List: &7(" + profile.getWarps().size() + '/' + 50 + ')'));
+            player.sendMessage(CC.translate("&7&m" + StringUtils.repeat("-", 48)));
+            player.sendMessage(CC.translate("&6Warp List: &7(" + profile.getWarps().size() + '/' + 50 + ')'));
             player.sendMessage("");
-            player.sendMessage(ColorText.translate("&e" + StringUtils.join(profile.getWarps().stream().map(PlayerWarp::getName).collect(Collectors.toList()), ", ")));
-            player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 48)));
+            player.sendMessage(CC.translate("&e" + StringUtils.join(profile.getWarps().stream().map(PlayerWarp::getName).collect(Collectors.toList()), ", ")));
+            player.sendMessage(CC.translate("&7&m" + StringUtils.repeat("-", 48)));
         }
     }
 }

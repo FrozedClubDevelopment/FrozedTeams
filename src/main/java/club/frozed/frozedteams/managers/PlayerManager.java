@@ -9,5 +9,4 @@ public class PlayerManager {
     public PlayerManager() {
         instance = this;
     }
-
 }
