@@ -1,6 +1,7 @@
 package club.frozed.frozedteams;
 
 import club.frozed.frozedteams.commands.PlayerCommands;
+import club.frozed.frozedteams.commands.TeamCommand;
 import club.frozed.frozedteams.listeners.MobCatchingListener;
 import club.frozed.frozedteams.listeners.MobListener;
 import club.frozed.frozedteams.listeners.PlayerListener;
@@ -85,6 +86,7 @@ public class FrozedTeams extends JavaPlugin {
         // Register Commands
         CommandFramework framework = new CommandFramework(this);
         framework.registerCommands(new PlayerCommands());
+        framework.registerCommands(new TeamCommand());
 
         Bukkit.getConsoleSender().sendMessage(CC.translate("&7&m--------------------------------------------------------------"));
         Bukkit.getConsoleSender().sendMessage(CC.translate("&7This server is using &bFrozedTeams"));
