@@ -62,10 +62,6 @@ public class Team {
         return teams.stream().filter(team -> team.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
     }
 
-    public static Team getTeamByUUID(UUID uuid){
-        return teams.stream().filter(team -> team.getUuid().equals(uuid)).findFirst().orElse(null);
-    }
-
     public static Team getPlayerTeam(Player player){
         for (Team team : teams){
             if (team.getLeader().equalsIgnoreCase(player.getName()) || team.getMembers().contains(player.getName())){
