@@ -69,7 +69,7 @@ public class Team {
     public static Team getPlayerTeam(Player player){
         for (Team team : teams){
             if (team.getLeader().equalsIgnoreCase(player.getName()) || team.getMembers().contains(player.getName())){
-                return  team;
+                return team;
             }
         }
         return null;
