@@ -150,4 +150,14 @@ public class PlayerCommands {
             player.sendMessage(CC.translate("&7&m" + StringUtils.repeat("-", 48)));
         }
     }
+
+    @Command(name = "buy")
+    public void onBuyCommand(CommandArgs commandArgs) {
+
+    }
+
+    @Command(name = "sell")
+    public void onSellCommand(CommandArgs commandArgs) {
+
+    }
 }
