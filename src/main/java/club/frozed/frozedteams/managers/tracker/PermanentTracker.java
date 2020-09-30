@@ -2,6 +2,7 @@ package club.frozed.frozedteams.managers.tracker;
 
 import club.frozed.frozedteams.FrozedTeams;
 import club.frozed.frozedteams.enums.TrackerDirection;
+import club.frozed.frozedteams.utils.Utils;
 import club.frozed.frozedteams.utils.chat.fanciful.FancyMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -66,7 +67,7 @@ public class PermanentTracker implements Tracker {
             int length = this.countDistance(direction) * 25;
             if (length != 0) {
                 Set<String> players = new TreeSet<>();
-                for (Player player : FrozedTeams.getInstance().getServer().getOnlinePlayers()) {
+                for (Player player : Utils.getOnlinePlayers()) {
                     if (this.player.canSee(player) && (this.onBlock(player, direction) & !player.equals(this.player))) {
                         players.add(player.getDisplayName());
                     }

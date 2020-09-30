@@ -53,7 +53,7 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     final void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
@@ -71,5 +71,5 @@ public class PlayerListener implements Listener {
                 event.setCancelled(true);
             }
         }
-    }
+    }*/
 }
