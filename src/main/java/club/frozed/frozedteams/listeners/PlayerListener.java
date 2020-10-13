@@ -53,23 +53,23 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @EventHandler
-    final void onBlockBreak(BlockBreakEvent event) {
-        Player player = event.getPlayer();
-        if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
-            if (LocationManager.getSpawn().distance(player.getLocation()) <= FrozedTeams.getInstance().getConfig().getInt("Settings.protect-size")) {
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    @EventHandler
-    final void onBlockPlace(BlockPlaceEvent event) {
-        Player player = event.getPlayer();
-        if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
-            if (LocationManager.getSpawn().distance(player.getLocation()) <= FrozedTeams.getInstance().getConfig().getInt("Settings.protect-size")) {
-                event.setCancelled(true);
-            }
-        }
-    }
+//    @EventHandler
+//    final void onBlockBreak(BlockBreakEvent event) {
+//        Player player = event.getPlayer();
+//        if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
+//            if (LocationManager.getSpawn().distance(player.getLocation()) <= FrozedTeams.getInstance().getConfig().getInt("Settings.protect-size")) {
+//                event.setCancelled(true);
+//            }
+//        }
+//    }
+//
+//    @EventHandler
+//    final void onBlockPlace(BlockPlaceEvent event) {
+//        Player player = event.getPlayer();
+//        if (player.getWorld() == LocationManager.getSpawn().getWorld()) {
+//            if (LocationManager.getSpawn().distance(player.getLocation()) <= FrozedTeams.getInstance().getConfig().getInt("Settings.protect-size")) {
+//                event.setCancelled(true);
+//            }
+//        }
+//    }
 }

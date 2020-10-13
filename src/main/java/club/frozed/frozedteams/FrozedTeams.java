@@ -19,6 +19,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,6 +80,13 @@ public class FrozedTeams extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new SalvagingListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
         Bukkit.getPluginManager().registerEvents(new MobListener(), this);
+
+        // Register Vault
+        if (!setupEconomy()) {
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&cFailed to register economy sistem disabling plugin."));
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
 
         // Register Managers
         registerManagers();

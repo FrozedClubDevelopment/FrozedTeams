@@ -1,0 +1,17 @@
+PLAYER-NOT-FOUND: "&cPlayer '{PLAYER}' not found."
+CANT-TRACK-NETHER: "&cYou cannot track in the nether!"
+INVALID-TRACK-COMPASS: "&cNot a valid tracking compass."
+CANT-TRACK-ALL: "&cYou cannot track all with this type of tracker."
+TRACK-WITHIN-FORMAT: "&a{PLAYER} is within {BLOCKS} blocks {DIRECTION} of here."
+TRACK-NOT-WITHIN-FORMAT: "&a{PLAYER} is NOT within {BLOCKS} blocks {DIRECTION} of here."
+NO-WARPS: "&cYou don't have warps saved."
+COULD-NOT-TELEPORT: "&cYou could not be teleported to the warp."
+TELEPORTING-WARP: "&aYou're being teleported to {WARP}'s Warp."
+WARP-ALREADY-CREATED: "&cYou already have a warp named '{WARP}'."
+WARP-CREATED: "&aWarp '{WARP}' successfully created."
+WARP-DELETED: "&cWarp '{WARP}' successfully deleted."
+
+Catching:
+  Succeeded: "&aSuccessfully catched a <entity>"
+  NotTooFar: "&cYou need to be 5 blocks away from the mob to catch it!"
+  NotEnoughXP: "&cYou need 25 levels of XP to catch the mob!"
