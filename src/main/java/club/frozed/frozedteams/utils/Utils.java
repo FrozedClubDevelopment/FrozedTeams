@@ -6,13 +6,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ryzeon
- * Project: FrozedTeams
- * Date: 11/09/2020 @ 19:26
- * Template by Elp1to
- */
-
 public class Utils {
 
     public static List<Player> getOnlinePlayers() {
@@ -22,4 +15,14 @@ public class Utils {
         return players;
     }
 
+    public static int getPing(Player player) {
+        try {
+            String version = Bukkit.getServer().getClass().getPackage().getName().substring(23);
+            Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit." + version + ".entity.CraftPlayer");
+            Object handle = craftPlayer.getMethod("getHandle", new Class[0]).invoke(player);
+            return (Integer) handle.getClass().getDeclaredField("ping").get(handle);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
 }

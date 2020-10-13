@@ -1,19 +1,19 @@
-Scoreboard:
-  title: "&b&lFrozedTeams"
-  enabled: "&aEnabled"
-  disabled: "&cDisabled"
+SCOREBOARD:
+  TITLE: "&b&lFrozedTeams"
+  ENABLED: "&aEnabled"
+  DISABLED: "&cDisabled"
 
-  spawn-scoreboard:
+  SPAWN-SCOREBOARD:
     - "&7&m------------------"
     - " "
     - "&7&m------------------"
 
-  outside-spawn-scoreboard:
+  OUTSIDE-SPAWN-SCOREBOARD:
     - "&7&m------------------"
     - " "
     - "&7&m------------------"
 
-  pvp-protection-scoreboard:
+  PVP-PROTECTION-SCOREBOARD:
     - "&7&m------------------"
     - " "
     - "&7&m------------------"
