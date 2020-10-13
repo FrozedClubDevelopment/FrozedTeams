@@ -1,6 +1,8 @@
 package club.frozed.frozedteams.commands;
 
 import club.frozed.frozedteams.FrozedTeams;
+import club.frozed.frozedteams.data.PlayerData;
+import club.frozed.frozedteams.managers.PlayerDataManager;
 import club.frozed.frozedteams.managers.tracker.PermanentTracker;
 import club.frozed.frozedteams.managers.tracker.TemporalTracker;
 import club.frozed.frozedteams.managers.tracker.Tracker;
@@ -158,6 +160,20 @@ public class PlayerCommands {
 
     @Command(name = "sell")
     public void onSellCommand(CommandArgs commandArgs) {
+
+    }
+
+    @Command(name = "debug")
+    public void onDebugCommand(CommandArgs commandArgs) {
+        Player player = commandArgs.getPlayer();
+        String[] args = commandArgs.getArgs();
+
+        player.sendMessage(CC.translate("&bPlayer debug -> &f" + player.getName()));
+        player.sendMessage(CC.translate("&b - getByUUID -> " + PlayerDataManager.getInstance().getByUUID(player.getUniqueId())));
+        player.sendMessage(CC.translate("&b - getState -> " + new PlayerData(player.getUniqueId()).getState()));
+        player.sendMessage(CC.translate("&b - getName -> " + new PlayerData(player.getUniqueId()).getName()));
+        player.sendMessage(CC.translate("&b - getUuid -> " + new PlayerData(player.getUniqueId()).getUuid()));
+        player.sendMessage(CC.translate("&b - getBalance -> " + new PlayerData(player.getUniqueId()).getBalance()));
 
     }
 }
